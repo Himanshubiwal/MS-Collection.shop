@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
+import { getImageUrl } from '../../services/api.js';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
 
 const CartDrawer = () => {
@@ -47,7 +48,7 @@ const CartDrawer = () => {
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
-          
+
           {/* Header */}
           <div className="p-6 border-b border-neutral-200">
             <div className="flex items-center justify-between">
@@ -108,8 +109,12 @@ const CartDrawer = () => {
                   className="flex space-x-4 pb-6 border-b border-neutral-100 last:border-0 last:pb-0"
                 >
                   <img
-                    src={item.image}
+                    src={getImageUrl(item.image)}
                     alt={item.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600';
+                    }}
                     className="w-20 h-24 object-cover bg-neutral-100 rounded flex-shrink-0"
                   />
                   <div className="flex-1 flex flex-col justify-between text-sm">
@@ -165,7 +170,7 @@ const CartDrawer = () => {
           {/* Footer Checkout Summary */}
           {cartItems.length > 0 && (
             <div className="p-6 border-t border-neutral-200 bg-neutral-50 space-y-4">
-              
+
               {/* Promo code accordion */}
               <form onSubmit={handleApplyPromo} className="flex space-x-2">
                 <input

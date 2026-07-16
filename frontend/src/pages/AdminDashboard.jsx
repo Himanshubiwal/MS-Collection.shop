@@ -129,7 +129,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      
+
       {/* Header */}
       <div className="pb-6 border-b border-neutral-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center space-x-3">
@@ -146,18 +146,16 @@ const AdminDashboard = () => {
         <div className="flex space-x-2 bg-neutral-100 p-1 rounded">
           <button
             onClick={() => setActiveTab('products')}
-            className={`px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-1.5 ${
-              activeTab === 'products' ? 'bg-white text-black shadow-sm' : 'text-neutral-600 hover:text-black'
-            }`}
+            className={`px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-1.5 ${activeTab === 'products' ? 'bg-white text-black shadow-sm' : 'text-neutral-600 hover:text-black'
+              }`}
           >
             <ShoppingBag className="w-4 h-4" />
             <span>Catalog ({products.length})</span>
           </button>
           <button
             onClick={() => setActiveTab('orders')}
-            className={`px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-1.5 ${
-              activeTab === 'orders' ? 'bg-white text-black shadow-sm' : 'text-neutral-600 hover:text-black'
-            }`}
+            className={`px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-1.5 ${activeTab === 'orders' ? 'bg-white text-black shadow-sm' : 'text-neutral-600 hover:text-black'
+              }`}
           >
             <Package className="w-4 h-4" />
             <span>Orders ({orders.length})</span>
@@ -244,10 +242,9 @@ const AdminDashboard = () => {
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded ${
-                      order.orderStatus === 'Delivered' ? 'bg-green-100 text-green-800' :
-                      order.orderStatus === 'Shipped' ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800'
-                    }`}>
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded ${order.orderStatus === 'Delivered' ? 'bg-green-100 text-green-800' :
+                        order.orderStatus === 'Shipped' ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800'
+                      }`}>
                       {order.orderStatus}
                     </span>
                     <span className="font-semibold text-sm">₹{order.totalPrice.toFixed(2)} INR</span>
@@ -272,9 +269,8 @@ const AdminDashboard = () => {
                         key={status}
                         type="button"
                         onClick={() => handleUpdateOrderStatus(order._id, status, order.trackingNumber)}
-                        className={`px-2.5 py-1 rounded text-xs font-medium border transition-colors ${
-                          order.orderStatus === status ? 'bg-black text-white border-black' : 'bg-neutral-50 border-neutral-200 hover:border-black'
-                        }`}
+                        className={`px-2.5 py-1 rounded text-xs font-medium border transition-colors ${order.orderStatus === status ? 'bg-black text-white border-black' : 'bg-neutral-50 border-neutral-200 hover:border-black'
+                          }`}
                       >
                         {status}
                       </button>

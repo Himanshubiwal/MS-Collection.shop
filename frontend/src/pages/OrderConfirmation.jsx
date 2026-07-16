@@ -43,7 +43,7 @@ const OrderConfirmation = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 space-y-10">
-      
+
       {/* Banner */}
       <div className="text-center space-y-3 bg-neutral-50 border border-neutral-200 p-8 rounded-lg">
         <CheckCircle2 className="w-12 h-12 text-green-600 mx-auto" />

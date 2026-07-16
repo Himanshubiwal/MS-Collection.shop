@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const primaryImg = product.images?.[0]?.url || 'https://via.placeholder.com/600x700';
   const secondaryImg = product.images?.[1]?.url || primaryImg;
 
   // Extract unique color variants for swatches display
   const uniqueColors = product.variants
     ? Array.from(new Set(product.variants.map(v => v.colorHex)))
-        .map(hex => product.variants.find(v => v.colorHex === hex))
+      .map(hex => product.variants.find(v => v.colorHex === hex))
     : [];
 
   return (
@@ -68,6 +68,10 @@ const ProductCard = ({ product }) => {
         )}
       </div>
     </div>
+  );
+};
+
+export default ProductCard;
   );
 };
 

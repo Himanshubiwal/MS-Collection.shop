@@ -9,7 +9,7 @@ import { Truck, ShieldCheck, RefreshCw, Star, ChevronDown, Check, AlertCircle } 
 const ProductDetail = () => {
   const { slug } = useParams();
   const { addToCart, FREE_SHIPPING_THRESHOLD } = useCart();
-  
+
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -81,7 +81,7 @@ const ProductDetail = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      
+
       {/* Breadcrumb */}
       <nav className="text-xs text-neutral-500 mb-8 flex items-center space-x-2">
         <Link to="/" className="hover:text-black">Home</Link>
@@ -92,7 +92,7 @@ const ProductDetail = () => {
       </nav>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-        
+
         {/* Left: Image Gallery */}
         <div className="md:col-span-7 flex flex-col-reverse sm:flex-row gap-4">
           {/* Thumbnails */}
@@ -102,9 +102,8 @@ const ProductDetail = () => {
                 <button
                   key={i}
                   onClick={() => setSelectedImage(img.url)}
-                  className={`aspect-[4/5] sm:w-full rounded overflow-hidden border-2 transition-all ${
-                    selectedImage === img.url ? 'border-black' : 'border-transparent opacity-75 hover:opacity-100'
-                  }`}
+                  className={`aspect-[4/5] sm:w-full rounded overflow-hidden border-2 transition-all ${selectedImage === img.url ? 'border-black' : 'border-transparent opacity-75 hover:opacity-100'
+                    }`}
                 >
                   <img src={img.url} alt={`${product.name} view ${i + 1}`} className="w-full h-full object-cover" />
                 </button>
@@ -176,11 +175,10 @@ const ProductDetail = () => {
             <button
               onClick={handleAddToCart}
               disabled={!inStock}
-              className={`w-full py-4 rounded text-sm font-semibold tracking-widest uppercase transition-all shadow-lg ${
-                inStock
+              className={`w-full py-4 rounded text-sm font-semibold tracking-widest uppercase transition-all shadow-lg ${inStock
                   ? 'bg-black text-white hover:bg-neutral-800 hover:shadow-xl'
                   : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'
-              }`}
+                }`}
             >
               {inStock ? 'Add to Bag' : 'Out of Stock'}
             </button>
@@ -236,6 +234,18 @@ const ProductDetail = () => {
         onClose={() => setIsSizeGuideOpen(false)}
       />
     </div>
+  );
+};
+
+export default ProductDetail;
+
+      </div >
+
+  <SizeGuideModal
+    isOpen={isSizeGuideOpen}
+    onClose={() => setIsSizeGuideOpen(false)}
+  />
+    </div >
   );
 };
 

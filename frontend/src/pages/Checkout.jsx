@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
-import api from '../services/api.js';
+import api, { getImageUrl } from '../services/api.js';
 import { ShieldCheck, Truck, Lock, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 
 const Checkout = () => {
@@ -158,7 +158,7 @@ const Checkout = () => {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">
-        
+
         {/* Left: Shipping Details Form */}
         <form onSubmit={handlePaymentInitiate} className="lg:col-span-7 space-y-8">
           <div className="space-y-4">
@@ -267,7 +267,15 @@ const Checkout = () => {
             {cartItems.map((item) => (
               <div key={item.sku} className="flex justify-between items-center text-sm">
                 <div className="flex items-center space-x-3">
-                  <img src={item.image} alt={item.name} className="w-12 h-14 object-cover bg-neutral-200 rounded" />
+                  <img
+                    src={getImageUrl(item.image)}
+                    alt={item.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600';
+                    }}
+                    className="w-12 h-14 object-cover bg-neutral-200 rounded"
+                  />
                   <div>
                     <h4 className="font-medium line-clamp-1">{item.name}</h4>
                     <p className="text-xs text-neutral-500">Qty: {item.quantity} • {item.size} / {item.colorName}</p>

@@ -36,9 +36,31 @@ const apiLimiter = rateLimit({
 });
 app.use('/api', apiLimiter);
 
-// Middleware
+// Resilient CORS setup for Render + Vercel (allowing production and preview subdomains)
+const getAllowedOrigins = () => {
+  const defaults = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'];
+  if (process.env.CLIENT_URL) {
+    return [...defaults, ...process.env.CLIENT_URL.split(',').map(u => u.trim().replace(/\/$/, ''))];
+  }
+  return defaults;
+};
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const cleanOrigin = origin.replace(/\/$/, '');
+    const allowed = getAllowedOrigins();
+    if (
+      allowed.includes(cleanOrigin) ||
+      cleanOrigin.endsWith('.vercel.app') ||
+      cleanOrigin.endsWith('.onrender.com') ||
+      process.env.CLIENT_URL === '*' ||
+      process.env.NODE_ENV !== 'production'
+    ) {
+      return callback(null, true);
+    }
+    callback(new Error(`CORS blocked request from origin: ${origin}`));
+  },
   credentials: true,
 }));
 
