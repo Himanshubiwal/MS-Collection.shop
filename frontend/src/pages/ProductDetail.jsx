@@ -238,15 +238,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
-      </div >
-
-  <SizeGuideModal
-    isOpen={isSizeGuideOpen}
-    onClose={() => setIsSizeGuideOpen(false)}
-  />
-    </div >
-  );
-};
-
-export default ProductDetail;
