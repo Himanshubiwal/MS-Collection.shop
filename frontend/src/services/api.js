@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-const cleanBaseUrl = rawApiUrl.replace(/\/+$/, '');
+let cleanBaseUrl = rawApiUrl.replace(/\/+$/, '');
+if (!cleanBaseUrl.endsWith('/api')) {
+  cleanBaseUrl += '/api';
+}
 
 if (typeof window !== 'undefined' && window.location.protocol === 'https:' && cleanBaseUrl.includes('localhost')) {
   console.warn(

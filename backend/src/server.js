@@ -77,12 +77,21 @@ const uploadDir = path.join(process.cwd(), 'public', 'uploads');
 app.use('/uploads', express.static(uploadDir));
 
 // API Routes
+// Mount routes with /api prefix
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/lookbook', categoryRoutes);
+
+// Mount aliases on root so API calls work even if /api is omitted from VITE_API_URL
+app.use('/auth', authRoutes);
+app.use('/products', productRoutes);
+app.use('/orders', orderRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/categories', categoryRoutes);
+app.use('/lookbook', categoryRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
