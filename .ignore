@@ -1,0 +1,31 @@
+# Search and Tooling Ignore File (.ignore for ripgrep, Silver Searcher, and IDE search)
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Production Builds
+dist/
+build/
+out/
+.cache/
+.vite/
+
+# Logs and Temp
+*.log
+tmp/
+temp/
+scratch/
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/
+.gemini/

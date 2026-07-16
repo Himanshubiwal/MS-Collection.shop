@@ -1,0 +1,36 @@
+{
+  "name": "mscollection-backend",
+  "version": "1.0.0",
+  "description": "Production API for MS Collection E-Commerce Store (Sikar, Rajasthan)",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/seeder.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "mscollection",
+    "fashion",
+    "razorpay",
+    "express",
+    "mongodb"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb-memory-server": "^11.2.0",
+    "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
+    "razorpay": "^2.9.2",
+    "zod": "^3.22.4"
+  }
+}
